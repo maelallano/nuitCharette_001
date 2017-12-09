@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Comptatible" content="ie=edge">
+	<title>Shell Invaders</title>
+	<style type="text/css">
+		.letter {
+			width: 60px;
+			height: 60px;
+			text-align: center;
+			position: absolute;
+			top: 0;
+			font-size: 50px;
+		}
+
+		.a {
+			left: 40%;
+			background: red;
+		}
+
+		.b {
+			left: 40%;
+			background: green;
+		}
+
+		.c {
+			left: 40%;
+			background: yellow;
+		}
+
+		.d {
+			left: 40%;
+			background: pink;
+		}
+
+		.gameOverLine {
+			width: 100%;
+			border: 1px solid black;
+			position: absolute;
+			top: 85vh;
+		}
+	</style>
+</head>
+<body>
+	<div class="gameOverLine"></div>
+
+	<script type="text/javascript">
+		var life = 3
+
+		var score = 0
+
+		var limit = document.querySelector('.gameOverLine').offsetTop
+
+		var vA = 2
+		var vB = 8
+		var vC = 14
+		var vD = 20
+
+		var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+
+
+		function createLetters() {
+			for (var i = 0; i < 3; i++) {
+				var temp = Math.floor(Math.random() * 4)
+
+				if (temp === 0) {
+					temp = 'a'
+				} else if (temp === 1) {
+					temp = 'b'
+				} else if (temp === 2) {
+					temp = 'c'
+				} else {
+					temp = 'd'
+				}
+
+				var oneLetter = document.createElement("p")
+	    		document.body.appendChild(oneLetter)
+
+				oneLetter.classList.add("letter")
+		    	oneLetter.classList.add(temp)
+		    	oneLetter.style.left = Math.floor(Math.random() * 6) * 10 + 20 + '%'
+		    	oneLetter.textContent = alphabet[Math.floor(Math.random() * 26)]
+			}
+		}
+
+		setInterval(function() {
+			createLetters()
+		}, 2000)
+
+		setInterval(anime, 500)
+
+		function anime() {
+			var a = document.querySelectorAll('.a')
+			var b = document.querySelectorAll('.b')
+			var c = document.querySelectorAll('.c')
+			var d = document.querySelectorAll('.d')
+
+			for (let i = 0; i < a.length; i++) {
+				a[i].style.top = a[i].offsetTop + vA + 'px'
+			}
+			for (let i = 0; i < b.length; i++) {
+				b[i].style.top = b[i].offsetTop + vB + 'px'
+			}
+			for (let i = 0; i < c.length; i++) {
+				c[i].style.top = c[i].offsetTop + vC + 'px'
+			}
+			for (let i = 0; i < d.length; i++) {
+				d[i].style.top = d[i].offsetTop + vD + 'px'
+			}
+
+	    	window.addEventListener('keydown', function(event) {
+					if (event.keyCode >= 65 && event.keyCode <= 90) {
+						for (let j = 0; j < a.length; j++) {
+							if (event.key === a[j].textContent) {
+								a[j].remove()
+								score++
+							}
+						}
+						for (let j = 0; j < b.length; j++) {
+							if (event.key === b[j].textContent) {
+								b[j].remove()
+								score++
+							}
+						}
+						for (let j = 0; j < c.length; j++) {
+							if (event.key === c[j].textContent) {
+								c[j].remove()
+								score++
+							}
+						}
+						for (let j = 0; j < d.length; j++) {
+							if (event.key === d[j].textContent) {
+								d[j].remove()
+								score++
+							}
+						}
+					}
+				})
+
+	    	function checkLimit(letter) {
+	    		for (let i = 0; i < letter.length; i++) {
+					if (letter[i].offsetTop > limit) {
+						letter[i].remove()
+						console.log('wesh')
+						if (--life <= 0) {
+							console.log('GAME OVER')
+							setTimeout(function() {
+								location.reload()
+							}, 2000)
+						}
+					}
+				}
+	    	}
+
+	    	checkLimit(a)
+	    	checkLimit(b)
+	    	checkLimit(c)
+	    	checkLimit(d)
+
+	    	console.log(score)
+    	}
+
+	</script>
+</body>
+</html>
