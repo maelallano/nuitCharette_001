@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="assets/css/reset.css">
+		<link rel="stylesheet" href="assets/css/style.css">
+		<title>Shell Invaders</title>
+	</head>
+	<body>
+		<section class="profilesContainer">
+			<div class="profilesBigBox">
+				<div class="profilesBox"><img src="img/alex.png" alt="zoli img alex" class="profilesImg">
+					<div class="title"></div></div>
+				<div class="profilesBox"><img src="img/jesus.png" alt="zoli img jésus" class="profilesImg"></div>
+				<div class="profilesBox"><img src="img/yann.png" alt="zoli img yann" class="profilesImg"></div>
+			</div>
+			<div class="profilesBigBox">
+				<div class="profilesBox"><img src="img/alexandre.png" alt="zoli img alexandre" class="profilesImg"></div>
+				<div class="profilesBox"><img src="img/vincent.png" alt="zoli img vincent" class="profilesImg"></div>
+				<div class="profilesBox"><img src="img/andy.png" alt="zoli img andy" class="profilesImg"></div>
+			</div>
+		</section>
+	</body>
+	<script>
+        var children = document.querySelectorAll('.profilesBox');
+
+        for (let a = 0; a < children.length; a++) {
+            children[a].addEventListener('mouseover', function() {
+                console.log(a)
+                for (var i = 0; i < children.length; i++) {
+                    if (i !== a) {
+                        children[i].classList.add('over');
+                    }
+                }
+            });
+
+            children[a].addEventListener('mouseout', function() {
+                for (var i = 0; i < children.length; i++) {
+                    children[i].classList.remove('over');
+                }
+            });
+        }
+    </script>
+</html>
