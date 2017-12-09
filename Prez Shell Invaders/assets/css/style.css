@@ -1,0 +1,72 @@
+body {
+	background: #000;
+
+	height: 1000px;
+}
+.profilesContainer {
+	width: 75%;
+	margin: 250px auto;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.profilesBigBox {
+	display: flex;
+	flex-direction: column;
+}
+.profilesBox {
+	margin-bottom: 200px;
+	padding: 10px;
+
+	display: flex;
+}
+.profilesDescription {
+	background: #1fef00;
+
+    width: 210px;
+    height: 210px;
+    margin: 10px;
+
+    border-radius: 110px;
+    margin-top: -210px;
+
+    z-index: 0;
+    opacity: 0.2;
+    -webkit-transition: height 0.3s, opacity 0.3s;
+}
+.profilesDescription:hover {
+	height: 375px;
+
+	opacity: 1;
+} 
+.profilesImg {
+	width: 200px;
+	height: auto;
+
+	border: 5px #1fef00 solid;
+	border-radius: 100%;
+}
+.profileTitle {
+	width: 90%;
+	margin: 0 auto;
+
+    font-size: 1.2em;
+    font-weight: bold;
+    font-family: Courier;
+    text-align: center;
+
+    margin-bottom: 25px;
+}
+.profileText {
+	width: 75%;
+	margin: 0 auto;
+	
+	font-family: Courier;
+	text-align: center;
+}
+.over {
+	transition: opacity 0.5s;
+
+    opacity: 0.2;
+}
