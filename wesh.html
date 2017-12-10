@@ -8,6 +8,10 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<title>Shell Invaders</title>
 	<style type="text/css">
+		body {
+			background: black;
+		}
+
 		.letter {
 			width: 60px;
 			height: 60px;
@@ -91,7 +95,7 @@
 	</div>
 
 	<script type="text/javascript">
-		var life = 99999999999999999;
+		var life = 3
 
 		var score = 0
 
@@ -190,32 +194,27 @@
 	    	function checkLimit(letter) {
 	    		for (let i = 0; i < letter.length; i++) {
 					if (letter[i].offsetTop > limit) {
-
-						if (life < 18) {
-
-							if (life === 3) {
-								life = 2
-							} else if (life === 2) {
-								life = 1
-							} else if (life === 1) {
-								life = 0
-							}
-							letter[i].style.background = 'red'
-							if (life === 2) {
-								fa_heart3.style.color = 'grey'
-							} else if (life === 1) {
-								fa_heart2.style.color = 'grey'
-							} else if (life === 0) {
-								fa_heart1.style.color = 'grey'
-							}
-
-				}			
+						if (life === 3) {
+							life = 2
+						} else if (life === 2) {
+							life = 1
+						} else if (life === 1) {
+							life = 0
+						}
+						letter[i].style.background = 'red'
+						if (life === 2) {
+							fa_heart3.style.color = 'grey'
+						} else if (life === 1) {
+							fa_heart2.style.color = 'grey'
+						} else if (life === 0) {
+							fa_heart1.style.color = 'grey'
+						}		
 						setTimeout(function() {
 							letter[i].remove()
 						}, 100)
-						//console.log(life)
+						console.log(life)
 						if (life <= 0) {
-							//console.log('GAME OVER')
+							console.log('GAME OVER')
 							setTimeout(function() {
 								location.reload()
 							}, 2000)

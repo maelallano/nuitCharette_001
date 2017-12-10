@@ -11,6 +11,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
+ 
+  <audio autoplay loop>
+  <source src="assets/musique/Zanac_NES_-_Area_1_Music_Super_Extended[Mp3Converter.net].mp3" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
     <div class="container">
         <h1>Shell Invaders</h1>
  
@@ -19,7 +24,7 @@
             <p class="start">Start</p>
             <p class="letter1">Letters Level</p>
         </div>
-        
+ 
         <div class="explain">
             <p class="explain-p">Pour Jouer, utiliser les touches <br> du clavier !</p>
         </div>
@@ -33,10 +38,10 @@
         <i class="fa fa-heart fa-3x fa-heart1" aria-hidden="true"></i>
         <i class="fa fa-heart fa-3x fa-heart2" aria-hidden="true"></i>
         <i class="fa fa-heart fa-3x fa-heart3" aria-hidden="true"></i>
-
+ 
         <p class="scoreText">SCORE: 0</p>
         <p class="recordText">TOP-SCORE: It's over 9000 !</p>
-
+ 
         <div class="gameOverLine"></div>
     </div>
  
@@ -54,7 +59,7 @@
                 else if (event.keyCode === 40) {
                     arrow.classList.toggle('level');
                 }
-                else if (event.keyCode === 32) {
+                else if (event.keyCode === 39) {
                     console.log(arrow.classList.contains('level'))
                     if (arrow.classList.contains('level')) {
                         if (letter1.innerHTML == 'Git Level') {
@@ -72,7 +77,6 @@
                 console.log(arrow.classList.contains('start'))
                 container.style.display = 'none';
                 startGame()
-                containerLevel1.style.display = 'block'
                 containerLevel1.style.opacity = '1'
             } else {
                 container.style.display = '';
@@ -86,31 +90,31 @@
     </script>
     <script type="text/javascript">
     function startGame() {
-
-
-
+ 
+ 
+ 
         var life = 3
-
+ 
         var score = 0
-
+ 
         var limit = document.querySelector('.gameOverLine').offsetTop
         var scoreText = document.querySelector('.scoreText')
         var fa_heart1 = document.querySelector('.fa-heart1')
         var fa_heart2 = document.querySelector('.fa-heart2')
         var fa_heart3 = document.querySelector('.fa-heart3')
-
+ 
         var vA = 6
         var vB = 10
         var vC = 14
         var vD = 20
-
+ 
         var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-
-
+ 
+ 
         function createLetters() {
             for (var i = 0; i < 4; i++) {
                 var temp = Math.floor(Math.random() * 4)
-
+ 
                 if (temp === 0) {
                     temp = 'a'
                 } else if (temp === 1) {
@@ -120,29 +124,29 @@
                 } else {
                     temp = 'd'
                 }
-
+ 
                 var oneLetter = document.createElement("p")
                 document.body.appendChild(oneLetter)
-
+ 
                 oneLetter.classList.add("letter")
                 oneLetter.classList.add(temp)
                 oneLetter.style.left = Math.floor(Math.random() * 7) * 10 + 20 + '%'
                 oneLetter.textContent = alphabet[Math.floor(Math.random() * 26)]
             }
         }
-
+ 
         setInterval(function() {
             createLetters()
         }, 2000)
-
+ 
         setInterval(anime, 500/4)
-
+ 
         function anime() {
             var a = document.querySelectorAll('.a')
             var b = document.querySelectorAll('.b')
             var c = document.querySelectorAll('.c')
             var d = document.querySelectorAll('.d')
-
+ 
             for (let i = 0; i < a.length; i++) {
                 a[i].style.top = a[i].offsetTop + vA + 'px'
             }
@@ -155,7 +159,7 @@
             for (let i = 0; i < d.length; i++) {
                 d[i].style.top = d[i].offsetTop + vD + 'px'
             }
-
+ 
             window.addEventListener('keydown', function(event) {
                     if (event.keyCode >= 65 && event.keyCode <= 90) {
                         for (let j = 0; j < a.length; j++) {
@@ -184,7 +188,7 @@
                         }
                     }
                 })
-
+ 
             function checkLimit(letter) {
                 for (let i = 0; i < letter.length; i++) {
                     if (letter[i].offsetTop > limit) {
@@ -216,17 +220,17 @@
                     }
                 }
             }
-
+ 
             checkLimit(a)
             checkLimit(b)
             checkLimit(c)
             checkLimit(d)
-
+ 
             scoreText.textContent = 'SCORE: ' + score
-
+ 
         }
     }
-
+ 
     </script>
 </body>
 </html>
